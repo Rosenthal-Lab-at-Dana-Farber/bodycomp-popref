@@ -14,4 +14,4 @@ Magudia, K., Bridge, C. P., Bay, C. P., Babic, A., Fintelmann, F. J., Troschel, 
 
 Note on the use of self-reported race in this data: Self-identified race captures a complex mixture of social determinants of health that include socioeconomic status, historical disparities, inequitable access to care, cultural patterns, and persistent structural inequities. Race-specific data are provided here to support scientific understanding of these groups as they exist today, but great care should be taken to ensure that race-specific metrics are not used in a way that reinforces historical disparities. Please see the following article for additional discussion on this topic:
 
-    Vyas, D. A., Eisenstein, L. G., & Jones, D. S. (2020). Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms. New England Journal of Medicine, 383(9), 874-882. https://doi.org/10.1056/nejmms2004740
+Vyas, D. A., Eisenstein, L. G., & Jones, D. S. (2020). Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms. New England Journal of Medicine, 383(9), 874-882. https://doi.org/10.1056/nejmms2004740
