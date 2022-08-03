@@ -5,19 +5,6 @@
 
 # LICENSE: This code is provided under AGPLv3.
 
-#library(gamlss)
-#library(tidyverse)
-
-#lms_data_path presumed to be set using calls from python via rpy2
-#load(lms_data_path_r)
-
-# The input table is expected to have the following columns:
-# ma, sa, va: muscle area, subcutaneous fat area, and visceral fat area, all in cm2
-# age: in years at time of measurement
-# sex: {'M' or 'F'}. Insufficient data available for nonbinary and other gender identities
-# race: 'W' equals nonhispanic white/ caucasian. 'B' equals black. 'O' includes all other racial groupings and will not
-#    return results until additional reference populations are analyzed.
-
 # Note on the use of self-reported race in this data: Self-identified race captures a complex mixture of social
 #    determinants of health that include socioeconomic status, historical disparities, inequitable access to care,
 #    cultural patterns, and persistent structural inequities. Race-specific data are provided here to support
@@ -30,6 +17,37 @@
 #    https://doi.org/10.1056/nejmms2004740
 
 
+#############################################################################################
+#INSTALL REQUIRED PACKAGES ##################################################################
+#############################################################################################
+
+library(gamlss)
+library(tidyverse)
+
+
+#############################################################################################
+#DEFINE I/O DIR PATHS AND SET WORKING DIR PATH ##############################################
+#############################################################################################
+INPUT_DIR = "./input"
+OUTPUT_DIR = "./output"
+
+setwd(INPUT_DIR)
+
+#############################################################################################
+#LOAD INPUTS ################################################################################
+#############################################################################################
+# The input table is expected to have the following columns:
+# study_name: unique identifier for each exam
+# ma, sa, va: muscle area, subcutaneous fat area, and visceral fat area, all in cm2
+# age: in years at time of measurement
+# sex: {'M' or 'F'}. Insufficient data available for nonbinary and other gender identities
+# race: 'W' equals nonhispanic white/ caucasian. 'B' equals black. 'O' includes all other racial groupings and will not
+#    return results until additional reference populations are analyzed.
+
+df = read_csv('zscore_input.csv')
+df_1 = df %>% select(study_name, ma, sa, va, age, sex, race)
+
+load('perm_body_comp_lms_functions_no_phi.Rdata')
 
 #############################################################################################
 #DEFINE FUNCTION TO ESTIMATE Z-SCORES FROM INPUTS ###########################################
@@ -72,20 +90,16 @@ z_scores = function(age, sex, race, ma, sa, va) {
 }
 
 #############################################################################################
-#ESTIMATE Z-SCORES FROM UNIFIED INPUT DATAFRAME #############################################
+#ESTIMATE Z-SCORES FROM INPUT DATAFRAME #############################################
 #############################################################################################
 
-zscores_for_table = function(input_table) {
-list_z_scores = pmap(input_table %>% select(-study_name), z_scores) 
+list_z_scores = pmap(df_1 %>% select(-study_name), z_scores)
 df_z_scores = as_tibble(t(as.data.frame(list_z_scores)))
 colnames(df_z_scores) = c('ma_z_score', 'sa_z_score', 'va_z_score')
-output_table = input_table %>% bind_cols(df_z_scores) 
-return(output_table)
-}
- 
+df_2 = df_1 %>% bind_cols(df_z_scores)
 
 #############################################################################################
 #WRITE Z-SCORE OUTPUT #######################################################################
 #############################################################################################
 
-#write_csv(df_2, file.path(OUTPUT_DIR, "zscores.csv"), na = "")
+write_csv(df_2, file.path(OUTPUT_DIR, "zscores_output.csv"), na = "")
