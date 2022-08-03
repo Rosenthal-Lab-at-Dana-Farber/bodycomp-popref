@@ -12,3 +12,6 @@ To cite the source paper for this work, please use the following reference:
 Magudia, K., Bridge, C. P., Bay, C. P., Babic, A., Fintelmann, F. J., Troschel, F. M., Miskin, N., Wrobel, W. C., Brais, L. K., Andriole, K. P., Wolpin, B. M., & Rosenthal, M. H. (2021). Population-Scale CT-based Body Composition Analysis of a Large Outpatient Population Using Deep Learning to Derive Age-, Sex-, and Race-specific Reference Curves. Radiology, 298(2), 319-329. https://doi.org/10.1148/radiol.2020201640 
 
 
+Note on the use of self-reported race in this data: Self-identified race captures a complex mixture of social determinants of health that include socioeconomic status, historical disparities, inequitable access to care, cultural patterns, and persistent structural inequities. Race-specific data are provided here to support scientific understanding of these groups as they exist today, but great care should be taken to ensure that race-specific metrics are not used in a way that reinforces historical disparities. Please see the following article for additional discussion on this topic:
+
+    Vyas, D. A., Eisenstein, L. G., & Jones, D. S. (2020). Hidden in Plain Sight — Reconsidering the Use of Race Correction in Clinical Algorithms. New England Journal of Medicine, 383(9), 874-882. https://doi.org/10.1056/nejmms2004740
