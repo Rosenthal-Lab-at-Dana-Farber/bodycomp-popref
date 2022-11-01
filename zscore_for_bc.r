@@ -31,8 +31,6 @@ library(tidyverse)
 INPUT_DIR = "./input"
 OUTPUT_DIR = "./output"
 
-setwd(INPUT_DIR)
-
 #############################################################################################
 #LOAD INPUTS ################################################################################
 #############################################################################################
@@ -44,7 +42,7 @@ setwd(INPUT_DIR)
 # race: 'W' equals nonhispanic white/ caucasian. 'B' equals black. 'O' includes all other racial groupings and will not
 #    return results until additional reference populations are analyzed.
 
-df = read_csv('zscore_input.csv')
+df = read_csv(file.path(INPUT_DIR, 'zscore_input.csv'))
 df_1 = df %>% select(study_name, ma, sa, va, age, sex, race)
 
 load('perm_body_comp_lms_functions_no_phi.Rdata')
